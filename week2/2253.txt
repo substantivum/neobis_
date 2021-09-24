@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int a = 0, b = 0, c = 0;
+
+        while(in.hasNext()){
+
+            String need = in.nextLine();
+
+            if (need.length() >= 6 && need.length() <= 32){
+                for(int i=0 ; i<need.length() ; i++){
+                    if (need.charAt(i) >= 'a' && need.charAt(i) <= 'z')
+                        b++;
+                    else if (need.charAt(i) >= 'A' && need.charAt(i) <= 'Z')
+                        a++;
+                    else if (need.charAt(i) >= '0' && need.charAt(i) <= '9')
+                        c++;
+                }
+                if (a==0)
+                    System.out.println("Senha invalida.");
+                else if (b == 0)
+                    System.out.println("Senha invalida.");
+                else if (c == 0)
+                    System.out.println("Senha invalida.");
+                else if (a + b + c == need.length())
+                    System.out.println("Senha valida.");
+                else
+                    System.out.println("Senha invalida.");
+            }
+            else
+                System.out.println("Senha invalida.");
+
+            b = 0;
+            a = 0;
+            c = 0;
+        }
+        in.close();
+    }
+
+}
