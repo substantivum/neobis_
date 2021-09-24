@@ -3,12 +3,13 @@ package com.company;
 public class Pie {
 
     private String flavour, crust_type, inner_type;
-    private int cost;
+    private int id, cost;
 
-    public Pie(String flavour, String crust_type, String inner_type, int cost) {
+    public Pie(String flavour, String crust_type, String inner_type, int id, int cost) {
         this.flavour = flavour;
         this.crust_type = crust_type;
         this.inner_type = inner_type;
+	this.id = id;
         this.cost = cost;
     }
 
@@ -34,6 +35,14 @@ public class Pie {
 
     public void setInner_type(String inner_type) {
         this.inner_type = inner_type;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setID(int id) {
+	this.id = id;
     }
 
     public int getCost() {

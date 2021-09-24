@@ -2,11 +2,12 @@ package com.company;
 
 public class Donut {
     private String flavour, glaze_type;
-    private int cost;
+    private int id, cost;
 
-    public Donut(String flavour, String glaze_type, int cost) {
+    public Donut(String flavour, String glaze_type, int id, int cost) {
         this.flavour = flavour;
         this.glaze_type = glaze_type;
+	this.id = id;
         this.cost = cost;
     }
 
@@ -24,6 +25,14 @@ public class Donut {
 
     public void setGlaze_type(String glaze_type) {
         this.glaze_type = glaze_type;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setID(int id) {
+	this.id = id;
     }
 
     public int getCost() {

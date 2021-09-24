@@ -3,12 +3,13 @@ package com.company;
 public class Cake {
 
     private String flavour, cream, color;
-    private int layers, cost;
+    private int id, layers, cost;
 
-    public Cake(String flavour, String cream, String color, int layers, int cost) {
+    public Cake(String flavour, String cream, String color, int id, int layers, int cost) {
         this.flavour = flavour;
         this.cream = cream;
         this.color = color;
+	this.id = id;
         this.layers = layers;
         this.cost = cost;
     }
@@ -35,6 +36,14 @@ public class Cake {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public void setID(int id) {
+	this.id = id;
     }
 
     public int getLayers() {
