@@ -9,7 +9,7 @@ public class UniqueDonuts {
 
     public UniqueDonuts(String flavour, String glaze_type, int id, int cost) {
         this.flavour = flavour;
-        this.glaze_type = glaze_type;
+        this.glazeType = glazeType;
         this.id = id;
         this.cost = cost;
     }
@@ -22,12 +22,12 @@ public class UniqueDonuts {
         this.flavour = flavour;
     }
 
-    public String getGlaze_type() {
-        return glaze_type;
+    public String getGlazeType() {
+        return glazeType;
     }
 
-    public void setGlaze_type(String glaze_type) {
-        this.glaze_type = glaze_type;
+    public void setGlazeType(String glazeType) {
+        this.glazeType = glazeType;
     }
 
     public int getId() {
