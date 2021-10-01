@@ -37,16 +37,19 @@ public class Main {
         String add = "INSERT INTO cake (id, flavour, cream, layers, cost) VALUES (1, 'oreo', 'butter cream', 5, 250)";
         PreparedStatement ps = con.prepareStatement(add);
         ps.executeUpdate();
+        ps.close();
 
         //update info
         String update = "UPDATE cake SET flavour = 'Chocolate' WHERE id = 1";
         PreparedStatement up = con.prepareStatement(update);
         up.execute();
+        up.close();
 
         //delete info
         String delete = "DELETE FROM cake WHERE id = 1";
         PreparedStatement delps = con.prepareStatement(delete);
         delps.execute();
+        delps.close();
 
 
 
