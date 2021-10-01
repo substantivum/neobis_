@@ -3,11 +3,11 @@ package com.company;
 public class UniqueDonuts {
 
     private String flavour;
-    private String glaze_type;
+    private String glazeType;
     private int id;
     private int cost;
 
-    public UniqueDonuts(String flavour, String glaze_type, int id, int cost) {
+    public UniqueDonuts(String flavour, String glazeType, int id, int cost) {
         this.flavour = flavour;
         this.glazeType = glazeType;
         this.id = id;
