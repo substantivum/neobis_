@@ -2,13 +2,13 @@ package com.company;
 
 public class Donut {
     private String flavour;
-    private String glaze_type;
+    private String glazeType;
     private int id;
     private int cost;
 
-    public Donut(String flavour, String glaze_type, int id, int cost) {
+    public Donut(String flavour, String glazeType, int id, int cost) {
         this.flavour = flavour;
-        this.glaze_type = glaze_type;
+        this.glazeType = glazeType;
 	this.id = id;
         this.cost = cost;
     }
@@ -21,12 +21,12 @@ public class Donut {
         this.flavour = flavour;
     }
 
-    public String getGlaze_type() {
-        return glaze_type;
+    public String getGlazeType() {
+        return glazeType;
     }
 
-    public void setGlaze_type(String glaze_type) {
-        this.glaze_type = glaze_type;
+    public void setGlazeType(String glazeType) {
+        this.glazeType = glazeType;
     }
 
     public int getId() {
