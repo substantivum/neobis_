@@ -2,8 +2,12 @@ package com.company;
 
 public class Cake {
 
-    private String flavour, cream, color;
-    private int id, layers, cost;
+    private String flavour;
+    private String cream; 
+    private String color;
+    private int id;
+    private int layers;
+    private int cost;
 
     public Cake(String flavour, String cream, String color, int id, int layers, int cost) {
         this.flavour = flavour;
