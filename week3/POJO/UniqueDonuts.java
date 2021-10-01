@@ -2,8 +2,10 @@ package com.company;
 
 public class UniqueDonuts {
 
-    private String flavour, glaze_type;
-    private int id, cost;
+    private String flavour;
+    private String glaze_type;
+    private int id;
+    private int cost;
 
     public UniqueDonuts(String flavour, String glaze_type, int id, int cost) {
         this.flavour = flavour;
