@@ -2,8 +2,11 @@ package com.company;
 
 public class Pie {
 
-    private String flavour, crust_type, inner_type;
-    private int id, cost;
+    private String flavour;
+    private String crust_type;
+    private String inner_type;
+    private int id;
+    private int cost;
 
     public Pie(String flavour, String crust_type, String inner_type, int id, int cost) {
         this.flavour = flavour;
