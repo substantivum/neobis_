@@ -1,0 +1,29 @@
+According to week 6 tasks of study plan, in part 2 we should have created 5 API endpoints ant test them on Postman.
+
+1. Get
+	1. To get data about products
+	2. GET API /  http://localhost:8080/products
+	3. none
+	4. [{"id":1,"name":"Donut","description":"Good sweet thing"},{"id":2,"name":"Pie","description":"Baked goodness"}]
+
+2. Delete
+	1. Delete one product
+	2. DELETE API / http://localhost:8080/products/{id}
+	3. none
+	4. Product is deleted
+
+3. Post
+	1. Create one product
+	2. POST API / http://localhost:8080/products
+	3. {"id": 3, "name": "Ginger", "description": "Spicy thang"}
+	4. Product is added
+4. Put
+	1. Updates data about product
+	2. PUT API / http://localhost:8080/products/{id}
+	3. {"id": 3, "name": "Ginger", "description": "Spicy thing"}
+	4. Product is updated
+5. Get
+	1. Gets data about particular product
+	2. GET API / http://localhost:8080/products/{id}
+	3. none
+	4. {"id": 2, "name": "Pie", "description": "Baked goodness"}

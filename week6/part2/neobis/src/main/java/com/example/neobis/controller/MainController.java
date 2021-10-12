@@ -25,7 +25,7 @@ public class MainController {
         productRepo.put(pie.getId(), pie);
     }
 
-    @RequestMapping("/products")
+    @GetMapping("/products")
     public ResponseEntity<Object> getProducts() {
         return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
     }
@@ -48,5 +48,10 @@ public class MainController {
     public ResponseEntity<Object> add(@RequestBody Product p) {
         productRepo.put(p.getId(), p);
         return new ResponseEntity<>("Product is added", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Object> getOneProduct(@PathVariable Integer id) {
+        return new ResponseEntity<>(productRepo.get(id), HttpStatus.OK);
     }
 }
