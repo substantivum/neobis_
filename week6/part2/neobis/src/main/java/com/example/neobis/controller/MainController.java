@@ -1,57 +1,61 @@
 package com.example.neobis.controller;
 
-import com.example.neobis.POJO.Product;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.example.neobis.Entity.Product;
+import com.example.neobis.Exceptions.ProductNotFoundException;
+import com.example.neobis.Repositories.ProductRepo;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @RestController
 public class MainController {
-    private static Map<Integer, Product> productRepo = new HashMap<>();
-    static {
-        Product donut = new Product();
-        donut.setId(1);
-        donut.setName("Donut");
-        donut.setDescription("Good sweet thing");
-        productRepo.put(donut.getId(), donut);
 
-        Product pie = new Product();
-        pie.setId(2);
-        pie.setName("Pie");
-        pie.setDescription("Baked goodness");
-        productRepo.put(pie.getId(), pie);
+    private final ProductRepo repository;
+
+    MainController(ProductRepo repository) {
+        this.repository = repository;
     }
 
+
+    // Aggregate root
+    // tag::get-aggregate-root[]
     @GetMapping("/products")
-    public ResponseEntity<Object> getProducts() {
-        return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
+    List<Product> all() {
+        return repository.findAll();
+    }
+    // end::get-aggregate-root[]
+
+    @PostMapping("/products")
+    Product newProduct(@RequestBody Product newProduct) {
+        return repository.save(newProduct);
     }
 
-    @DeleteMapping("/products/{id}")
-    public ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
-        productRepo.remove(id);
-        return new ResponseEntity<>("Product is deleted", HttpStatus.OK);
+    // Single item
+
+    @GetMapping("/products/{id}")
+    Product one(@PathVariable Long id) {
+
+        return repository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Object> update(@PathVariable("id") Integer id, @RequestBody Product p) {
-        productRepo.remove(id);
-        p.setId(id);
-        productRepo.put(id, p);
-        return new ResponseEntity<>("Product is updated", HttpStatus.OK);
+    Product replaceProduct(@RequestBody Product newProduct, @PathVariable Long id) {
+
+        return repository.findById(id)
+                .map(product -> {
+                    product.setName(newProduct.getName());
+                    product.setDescription(newProduct.getDescription());
+                    return repository.save(product);
+                })
+                .orElseGet(() -> {
+                    newProduct.setId(id);
+                    return repository.save(newProduct);
+                });
     }
 
-    @PostMapping("/products")
-    public ResponseEntity<Object> add(@RequestBody Product p) {
-        productRepo.put(p.getId(), p);
-        return new ResponseEntity<>("Product is added", HttpStatus.CREATED);
-    }
-
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Object> getOneProduct(@PathVariable Integer id) {
-        return new ResponseEntity<>(productRepo.get(id), HttpStatus.OK);
+    @DeleteMapping("/products/{id}")
+    void deleteProduct(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }
