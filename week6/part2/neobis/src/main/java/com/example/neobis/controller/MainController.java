@@ -16,21 +16,15 @@ public class MainController {
         this.repository = repository;
     }
 
-
-    // Aggregate root
-    // tag::get-aggregate-root[]
     @GetMapping("/products")
     List<Product> all() {
         return repository.findAll();
     }
-    // end::get-aggregate-root[]
 
     @PostMapping("/products")
     Product newProduct(@RequestBody Product newProduct) {
         return repository.save(newProduct);
     }
-
-    // Single item
 
     @GetMapping("/products/{id}")
     Product one(@PathVariable Long id) {
